@@ -1,8 +1,16 @@
 import React from 'react'
 import Tabs from './Tabs'
 import { FiUser } from 'react-icons/fi'
+import {  useHistory, withRouter } from 'react-router-dom'
 
 function Body() {
+  const history = useHistory()
+
+  const navigateToLogin = () => {
+    history.push("/login")
+    window.location.reload()
+  }
+
   return (
     <div className='p-2 w-100' >
       <div className='d-flex justify-content-between w-100' >
@@ -12,11 +20,11 @@ function Body() {
             <li className="breadcrumb-item active" aria-current="page">FHR (Customer)</li>
           </ol>
         </nav>
-        <div className='d-flex p-1' >
+        <button className='d-flex p-1' onClick={()=> navigateToLogin() }>
           <h6>John Doe</h6>
           &nbsp;&nbsp;
           <FiUser fontSize={20} />
-        </div>
+        </button>
       </div>
 
       <h4>
@@ -30,4 +38,4 @@ function Body() {
   )
 }
 
-export default Body
+export default withRouter(Body)
